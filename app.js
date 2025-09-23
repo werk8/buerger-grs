@@ -6,48 +6,69 @@ dotenv.config();
 const app = express();
 const PORT = 8080;
 
-const productData = {
-  Produktbeschreibung: [
-    {
-      type: "paragraph",
-      text: "Lorem ipsum sit dolor aby artisan small batch shaman schlitz offal normcore. Mumblecore food truck next level fingerstache sriracha cred cronut meditation ennui art party 8-bit helvetica edison bulb try-hard. Narwhal helvetica squid...",
-      spans: [],
-      direction: "ltr",
-    },
-  ],
-  Zutaten: [
-    {
-      type: "paragraph",
-      text: "28% Schweinefleisch, HARTWEIZENGRIEß, Wasser, Weißbrot (WEIZENMEHL, Wasser, Speisesalz, Hefe), Spinat, Zwiebeln, VOLLEI**, Speisesalz, Petersilie, Dextrose, Stabilisator: Natriumcitrate, Gewürze, Gewürzextrakte (enthält SELLERIE), Rapsöl.** Eier aus Bodenhaltung.",
-      spans: [],
-      direction: "ltr",
-    },
-  ],
-  Allergikerhinweise: [
-    {
-      type: "paragraph",
-      text: "Es sind Ei, Milch und Weizen enthalten. Kann Spuren von Soja und Sellerie enthalten.",
-      spans: [],
-      direction: "ltr",
-    },
-  ],
-  Zubereitungsempfehlung: [
-    {
-      type: "paragraph",
-      text: "Pfanne: Butter oder Öl erhitzen, Maultaschen wahlweise am Stück oder geschnitten hinzugeben und bei mittlerer Hitze goldgelb anbraten.",
-      spans: [],
-      direction: "ltr",
-    },
-  ],
-  Lagerhinweise: [
-    {
-      type: "paragraph",
-      text: "Kühlart: gekühlt, Lagertemparatur: < 7 °C",
-      spans: [],
-      direction: "ltr",
-    },
-  ],
-};
+ const productData = [
+  {
+    "id": "Produktbeschreibung",
+    "label": "Produktbeschreibung",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Lorem ipsum sit dolor aby artisan small batch shaman schlitz offal normcore. Mumblecore food truck next level fingerstache sriracha cred cronut meditation ennui art party 8-bit helvetica edison bulb try-hard. Narwhal helvetica squid...",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ]
+  },
+  {
+    "id": "Zutaten",
+    "label": "Zutaten",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "28% Schweinefleisch, HARTWEIZENGRIEß, Wasser, Weißbrot (WEIZENMEHL, Wasser, Speisesalz, Hefe), Spinat, Zwiebeln, VOLLEI**, Speisesalz, Petersilie, Dextrose, Stabilisator: Natriumcitrate, Gewürze, Gewürzextrakte (enthält SELLERIE), Rapsöl.** Eier aus Bodenhaltung.",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ]
+  },
+  {
+    "id": "Allergikerhinweise",
+    "label": "Allergikerhinweise",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Es sind Ei, Milch und Weizen enthalten. Kann Spuren von Soja und Sellerie enthalten.",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ]
+  },
+  {
+    "id": "Zubereitungsempfehlung",
+    "label": "Zubereitungsempfehlung",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Pfanne: Butter oder Öl erhitzen, Maultaschen wahlweise am Stück oder geschnitten hinzugeben und bei mittlerer Hitze goldgelb anbraten.",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ]
+  },
+  {
+    "id": "Lagerhinweise",
+    "label": "Lagerhinweise",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Kühlart: gekühlt, Lagertemparatur: < 7 °C",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ]
+  }
+]
+
 
 app.use((req, res, next) => {
   const authHeader = req.headers['authorization']; 
