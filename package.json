@@ -1,5 +1,12 @@
 {
   "type": "module",
+  "name": "buerger-grs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "dotenv": "^17.2.2",
     "express": "^5.1.0"
