@@ -49,14 +49,14 @@ const productData = {
   ],
 };
 
-// app.use((req, res, next) => {
-//   const authHeader = req.headers['authorization']; 
-//   const token = authHeader?.split(' ')[1];
-//   if (token !== process.env.TOKEN) {
-//     return res.status(403).json({ error: 'Forbidden' });
-//   }
-//   next();
-// });
+app.use((req, res, next) => {
+  const authHeader = req.headers['authorization']; 
+  const token = authHeader?.split(' ')[1];
+  if (token !== process.env.TOKEN) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+  next();
+});
 
 
 app.get('/grs', async (req, res) => {
