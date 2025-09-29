@@ -80,9 +80,17 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/grs', async (req, res) => {
+app.get('/products/:id', async (req, res) => {
+  const productId = req.params.id
+  const url = `${process.env.URL}/view/Productinformation?artnr=${productId}`
+
   try {
-    res.json(productData);
+    // const response = fetch(url)
+
+    // if (!response.ok) {
+    //   throw new Error(`HTTP ${response.status}`);
+    // }
+    res.json(productData, productId);
   } catch (error) {
     res.status(500).json({ error: 'Error on fetching data' });
   }
