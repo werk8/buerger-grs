@@ -104,19 +104,19 @@ app.get('/products/:id', async (req, res) => {
   console.log(JSON.stringify({
     event: "fetch_product",
     productId,
-    url: `${process.env.URL}/view/Productinformation?artnr=${productId}`
+    url: `${process.env.URL}/view/Productinformation?artnr=%27${productId}%27`
   }));
   
   try {
-    // const response = await fetch(url);
+    const response = await fetch(url);
     
-    // if (!response.ok) {
-    //   throw new Error(`HTTP ${response.status}`);
-    // }
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
     
-    // const data = await response.json()
+    const data = await response.json()
 
-    res.json(productData);
+    res.json(data);
   } catch (error) {
      console.error(JSON.stringify({
       event: "error_fetch_product",
