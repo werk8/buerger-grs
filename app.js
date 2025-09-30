@@ -79,21 +79,49 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(JSON.stringify({
+      timestamp: new Date().toISOString(),
+      method: req.method,
+      path: req.originalUrl,
+      status: res.statusCode,
+      duration: `${duration}ms`,
+      ip: req.ip
+    }));
+  });
+
+  next();
+});
 
 app.get('/products/:id', async (req, res) => {
   const productId = req.params.id
   const url = `${process.env.URL}/view/Productinformation?artnr=${productId}`
 
-  console.log(`Request for product: ${productId}, fetching: ${url}`);
-
+  console.log(JSON.stringify({
+    event: "fetch_product",
+    productId,
+    url: `${process.env.URL}/view/Productinformation?artnr=${productId}`
+  }));
+  
   try {
-    // const response = fetch(url)
-
+    // const response = await fetch(url);
+    
     // if (!response.ok) {
     //   throw new Error(`HTTP ${response.status}`);
     // }
+
     res.json(productData);
   } catch (error) {
+     console.error(JSON.stringify({
+      event: "error_fetch_product",
+      productId,
+      error: error.message
+    }));
+
     res.status(500).json({ error: 'Error on fetching data' });
   }
 });
