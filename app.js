@@ -99,12 +99,12 @@ app.use((req, res, next) => {
 
 app.get('/products/:id', async (req, res) => {
   const productId = req.params.id
-  const url = `${process.env.URL}/view/Productinformation?artnr=${productId}`
+  const url = `${process.env.URL}/view/Productinformation?artnr=%27${productId}%27`
 
   console.log(JSON.stringify({
     event: "fetch_product",
     productId,
-    url: `${process.env.URL}/view/Productinformation?artnr=%27${productId}%27`
+    url: url
   }));
   
   try {
