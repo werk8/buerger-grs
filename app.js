@@ -108,15 +108,15 @@ app.get('/products/:id', async (req, res) => {
   }));
   
   try {
-    const response = await fetch(url);
+    // const response = await fetch(url);
     
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
+    // if (!response.ok) {
+    //   throw new Error(`HTTP ${response.status}`);
+    // }
     
-    const data = await response.json()
+    // const data = await response.json()
 
-    res.json(data);
+    res.json(productData);
   } catch (error) {
      console.error(JSON.stringify({
       event: "error_fetch_product",
